@@ -80,6 +80,6 @@ for dir in ${USE_DIR[@]}; do
 		${WORKSPACE_LOCAL}/${dir}/"
 
 	echo $base_command
-	#eval $base_command
+	eval $base_command
 
 done
