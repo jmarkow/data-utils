@@ -5,6 +5,7 @@ INCLUDE_RAW=false
 INCLUDE_MODEL=false
 DRY_RUN=false
 NO_RECURSE=false
+DELETE=false
 
 if [ -z "$WORKSPACE_LOCAL" ]; then
 	echo 'ERROR: you must have $WORKSPACE_LOCAL set in your environment'
@@ -40,6 +41,9 @@ case $key in
 		-n|--no-recurse)
 		NO_RECURSE=true
 		;;
+		--delete)
+		DELETE=true
+		;;
 		*)
 		USE_DIR=$key
     ;;
@@ -68,6 +72,10 @@ fi
 
 if [[ "${DRY_RUN}" = true ]]; then
 	prefix_command+=" --dry-run"
+fi
+
+if [[ "{$DELETE}" = true ]]; then
+	prefix_command+=" --delete"
 fi
 
 if [[ "${NO_RECURSE}" = false ]]; then
