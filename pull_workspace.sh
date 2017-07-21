@@ -74,13 +74,14 @@ if [[ "${DRY_RUN}" = true ]]; then
 	prefix_command+=" --dry-run"
 fi
 
-if [[ "{$DELETE}" = true ]]; then
+if [[ "${DELETE}" = true ]]; then
 	prefix_command+=" --delete"
 fi
 
 if [[ "${NO_RECURSE}" = false ]]; then
 	USE_DIR=( `find ${WORKSPACE_LOCAL}/${USE_DIR} -mindepth 1 -maxdepth 1 -type d | cut -c 3- | xargs basename` )
 fi
+
 
 for dir in ${USE_DIR[@]}; do
 
