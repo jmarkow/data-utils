@@ -18,10 +18,10 @@ if [ -z "$WORKSPACE_ORCHESTRA" ]; then
 fi
 
 if [ -z "$WORKSPACE_CAT" ]; then
-  WORKSPACE_CAT=true
+  SKIP_CAT=false
 else
-  echo "Setting cat file sync to ${WORKSPACE_CAT}"
-  WORKSPACE_CAT=${WORKSPACE_CAT}
+  echo "Setting cat file skip to ${WORKSPACE_CAT}"
+  SKIP_CAT=${WORKSPACE_CAT}
 fi
 
 while [[ $# -gt 0 ]]
@@ -33,7 +33,7 @@ case $key in
   DRY_RUN=true
   ;;
   --skip-cat)
-  WORKSPACE_CAT=false
+  SKIP_CAT=true
   ;;
   *)
   USE_DIR=$key
@@ -44,7 +44,7 @@ done
 
 prefix_command='rsync -avu --exclude \.in_treatment'
 
-if [[ "${WORKSPACE_CAT}" = false ]]; then
+if [[ "${SKIP_CAT}" = true ]]; then
   prefix_command+=" --exclude \"cat*.mat\""
 fi
 

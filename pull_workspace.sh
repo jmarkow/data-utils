@@ -23,10 +23,10 @@ if [ -z "$WORKSPACE_ORCHESTRA" ]; then
 fi
 
 if [ -z "$WORKSPACE_CAT" ]; then
-  WORKSPACE_CAT=true
+  SKIP_CAT=false
 else
-  echo "Setting cat file sync to ${WORKSPACE_CAT}"
-  WORKSPACE_CAT=${WORKSPACE_CAT}
+  echo "Setting cat file skip to ${WORKSPACE_CAT}"
+  SKIP_CAT=${WORKSPACE_CAT}
 fi
 
 while [[ $# -gt 0 ]]
@@ -49,7 +49,7 @@ case $key in
   NO_RECURSE=true
   ;;
   --skip-cat)
-  WORKSPACE_CAT=false
+  SKIP_CAT=true
   ;;
   --delete)
   DELETE=true
@@ -80,7 +80,7 @@ if [[ "${INCLUDE_RAW}" = false ]]; then
   prefix_command+=" --exclude \"depth.dat\" --exclude \"*.gz\""
 fi
 
-if [[ "${WORKSPACE_CAT}" = false ]]; then
+if [[ "${SKIP_CAT}" = true ]]; then
   prefix_command+=" --exclude \"cat*.mat\""
 fi
 
