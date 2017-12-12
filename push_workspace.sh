@@ -43,7 +43,7 @@ esac
 shift
 done
 
-prefix_command="rsync -avu"
+prefix_command='rsync -avu --exclude \.in_treatment'
 
 if [[ "${WORKSPACE_CAT}" = false ]]; then
   prefix_command+=" --exclude \"cat*.mat\""

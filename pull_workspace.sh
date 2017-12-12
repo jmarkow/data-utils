@@ -67,7 +67,7 @@ if [[ -z "${USE_DIR}" ]] && [[ "${NO_RECURSE}" = true ]]; then
   exit 1
 fi
 
-prefix_command='rsync -avu --exclude *.gz --exclude *.avi'
+prefix_command='rsync -avu --exclude *.gz --exclude *.avi --exclude \.in_treatment'
 
 if [[ "${INCLUDE_MODEL}" = false ]]; then
   prefix_command+=" --exclude \"depth_nocable_em.mat\""
