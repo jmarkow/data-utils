@@ -1,7 +1,6 @@
 #!/bin/bash
 
 DRY_RUN=false
-WORKSPACE_CAT=true
 
 if [ -z "$WORKSPACE_LOCAL" ]; then
   echo 'ERROR: you must have $WORKSPACE_LOCAL set in your environment'

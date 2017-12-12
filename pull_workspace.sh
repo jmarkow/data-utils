@@ -6,7 +6,6 @@ INCLUDE_MODEL=false
 DRY_RUN=false
 NO_RECURSE=false
 DELETE=false
-WORKSPACE_CAT=true
 
 if [ -z "$WORKSPACE_LOCAL" ]; then
   echo 'ERROR: you must have $WORKSPACE_LOCAL set in your environment'
